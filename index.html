@@ -107,6 +107,12 @@
 </style>
 </head>
 <body style="background- color: black;">
+<div style="position: absolute; top: 20px; left: 40px; z-index: 9999;">
+<button onclick="window.location.href='https://cryptoodie.github.io/KASPA-VS.-BITCOIN-MINER-REVENUE-/'" style="display: block; margin-bottom: 10px; width: 70px; height: 70px; font-size: 0.9em; font-weight: bold;">10 BPS</button>
+<button onclick="window.location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-32-BPS/'" style="display: block; margin-bottom: 10px; width: 70px; height: 70px; font-size: 0.9em; font-weight: bold;">32 BPS</button>
+<button onclick="window.location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-100BPS/'" style="display: block; width: 70px; height: 70px; font-size: 0.9em; font-weight: bold;">100 BPS</button>
+</div>
+
 <h1 style="text-align:center; font-size: 6em; margin-top:10px;">
 <span style="color:#70C7BA;">Kaspa</span> vs. <span style="color:#FF9900;">Bitcoin</span>
 </h1>
@@ -115,9 +121,7 @@
 <button onclick="toggleBubble('exampleBubble')" style="font-size: 2.4em; line-height: 1.6; padding: 10px 20px;">Example</button>
 </div>
 <div id="securityBubble" onclick="toggleBubble('securityBubble')" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  max-width: 700px; background: #222; color: #fff; padding: 30px; border-radius: 15px; z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); font-size: 2.4em; line-height: 1.6;">
-  As block rewards decrease over time due to halvings, transaction fees will need to increase to maintain an adequate security budget. While there isn't a fixed percentage of market capitalization that determines a "good" security budget, historical analysis suggests that approximately 3% of Bitcoin's market cap has been sufficient to acquire 51% of the network's hash power.
-</div>
+  max-width: 700px; background: #222; color: #fff; padding: 30px; border-radius: 15px; z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); font-size: 2.4em; line-height: 1.6;">As block rewards decline through halvings, transaction fees must rise to maintain a secure and sustainable network. While there’s no fixed rule, history shows that dedicating around 3% of Bitcoin’s market cap has been enough to secure 51% of the network’s hash power. This 3% threshold isn’t unique to Bitcoin. It likely applies to any Proof-of-Work system designed to resist 51% attacks — including Kaspa.</div>
 <div id="exampleBubble" onclick="toggleBubble('exampleBubble')" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   max-width: 700px; background: #222; color: #fff; padding: 30px; border-radius: 15px; z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); font-size: 2.4em; line-height: 1.6;"><div style="padding: 20px; max-width: 700px; font-size: 0.9em; text-align: center;">
 <p>If Bitcoin’s market cap is <strong>$1 trillion</strong>, then roughly <strong>$30 billion per year</strong> (or <strong>about $82 million per day</strong>) has historically been sufficient to deter a 51% attack.</p>
@@ -216,7 +220,7 @@
     const btcReward = getBitcoinBlockReward(rewardDate);
 
       const kaspaBlock = kaspaRate * 86400 * kaspaPrice;
-      const kaspaFee = feeRate * 8294400000 * (congestion / 100);
+      const kaspaFee = feeRate * 2592000000 * (congestion / 100);
       const kaspaTotal = kaspaBlock + kaspaFee;
 
       const btcBlock = btcReward * 144 * bitcoinPrice;
