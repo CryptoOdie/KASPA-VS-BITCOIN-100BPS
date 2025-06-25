@@ -214,7 +214,7 @@
     const btcReward = getBitcoinBlockReward(rewardDate);
 
       const kaspaBlock = kaspaRate * 86400 * kaspaPrice;
-      const kaspaFee = feeRate * 2592000000 * (congestion / 100);
+      const kaspaFee = feeRate * 259200000 * (congestion / 100);
       const kaspaTotal = kaspaBlock + kaspaFee;
 
       const btcBlock = btcReward * 144 * bitcoinPrice;
