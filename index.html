@@ -157,6 +157,11 @@
   }
 </script>
 <div class="container">
+<div id="congestionInfoBubble" style="
+    position: absolute; top: 160px; left: 50%; transform: translateX(-50%);
+    background-color: #333; color: white; padding: 15px 25px; border-radius: 10px;
+    font-size: 2.1em; font-weight: bold; display: none; z-index: 10000;
+    pointer-events: none; transition: opacity 0.5s ease; border: 6px solid black;"><span style="color: #f7931a;">Bitcoin:</span> <span style="color: #00BFFF;">(604,800)</span> Max daily txn’s<br/><span style="color: #70C7BA;">Kaspa:</span> <span style="color: #00BFFF;">(2,592,000,000)</span> Max daily txn’s</div>
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Network Congestion</div>
 <div class="value" id="congestionValue" style=" text-align: left; font-size: 2em; font-weight: bold;">50%</div>
@@ -165,10 +170,20 @@
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Date</div>
 <div class="value" id="dateValue" style=" text-align: left; font-size: 2em; font-weight: bold;">2025, June 07</div>
+<div id="dateInfoBubble" style="
+    position: absolute; top: 160px; left: 50%; transform: translateX(-50%);
+    background-color: #333; color: white; padding: 20px 30px; border-radius: 10px;
+    font-size: 2em; font-weight: bold; display: none; z-index: 10000;
+    pointer-events: none; transition: opacity 0.5s ease; border: 6px solid black;">Notice the massive changes in block rewards as the Date is moved.</div>
 <input class="slider" id="dateSlider" max="193" min="0" type="range" value="43"/>
 </div>
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">Fee Rate (USD)<br/><span class="value" id="feeValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></div>
+<div id="feeInfoBubble" style="
+    position: absolute; top: 280px; left: 50%; transform: translateX(-50%);
+    background-color: #333; color: white; padding: 20px 30px; border-radius: 10px;
+    font-size: 2em; font-weight: bold; display: none; z-index: 10000;
+    pointer-events: none; transition: opacity 0.5s ease; border: 6px solid black;">How much Fee’s do you need to get adequate security?</div>
 <input class="slider" id="feeSlider" max="1000" min="0" type="range" value="250"/>
 </div>
 <div class="box">
@@ -421,6 +436,44 @@ function updateExclamations() {
 
 setInterval(updateExclamations, 300);
 </script><script>
+    const congestionSlider = document.getElementById("congestionSlider");
+    const congestionBubble = document.getElementById("congestionInfoBubble");
+    let hideTimeout;
+
+    congestionSlider.addEventListener("input", () => {
+        if (congestionBubble) {
+            congestionBubble.style.display = "block";
+            congestionBubble.style.opacity = "1";
+
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                congestionBubble.style.opacity = "0";
+                setTimeout(() => {
+                    congestionBubble.style.display = "none";
+                }, 500);
+            }, 1500);
+        }
+    });
+    </script><script>
+const dateSlider = document.getElementById("dateSlider");
+const dateInfoBubble = document.getElementById("dateInfoBubble");
+let hideDateTimeout;
+
+dateSlider.addEventListener("input", () => {
+    if (dateInfoBubble) {
+        dateInfoBubble.style.display = "block";
+        dateInfoBubble.style.opacity = "1";
+
+        clearTimeout(hideDateTimeout);
+        hideDateTimeout = setTimeout(() => {
+            dateInfoBubble.style.opacity = "0";
+            setTimeout(() => {
+                dateInfoBubble.style.display = "none";
+            }, 500);
+        }, 1500);
+    }
+});
+</script><script>
 const feeSlider = document.getElementById("feeSlider");
 const feeInfoBubble = document.getElementById("feeInfoBubble");
 let hideFeeTimeout;
@@ -498,11 +551,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-</script>
-<div id="exampleInfoBubble" style="display: none; position: absolute; background-color: white; border: 2px solid black; padding: 10px; font-size: 14px; z-index: 9999; max-width: 400px; white-space: pre-wrap;">
-<br/>
-        If the market cap is $1 trillion, then roughly $20 billion per year (or about $54.8 million per day) has historically been sufficient to deter a 51% attack.<br/>
-        This isn’t wasted spending— it funds infrastructure. Unlike defending the U.S. dollar through military force, PoW security budgets largely support renewable energy mining. The result? More clean energy production, economic empowerment, and a monetary system that uplifts global prosperity.
-        </div>
-</body>
+</script></body>
 </html>
