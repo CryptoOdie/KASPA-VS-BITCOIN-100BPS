@@ -111,7 +111,11 @@
 </div>
 <h1 style="text-align:center; font-size: 6em; margin-top:10px;">
 <span style="color:#70C7BA;">Kaspa</span> vs. <span style="color:#FF9900;">Bitcoin</span>
-<div style="display: flex; justify-content: center; gap: 6px; margin-top: 10px; margin-bottom: 10px;"><button onclick="location.href='https://cryptoodie.github.io/KASPA-VS.-BITCOIN-MINER-REVENUE-/'" style="padding: 2px 4px; font-size: 0.6em; font-weight: bold; border-radius: 4px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;">10 BPS</button><button onclick="location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-32-BPS/'" style="padding: 2px 4px; font-size: 0.6em; font-weight: bold; border-radius: 4px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0; background-color: #007BFF; color: white; border-color: #0056b3;">32 BPS</button><button onclick="location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-100BPS/'" style="padding: 2px 4px; font-size: 0.6em; font-weight: bold; border-radius: 4px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;">100 BPS</button></div>
+<div style="display: flex; justify-content: center; gap: 6px; margin-top: 10px; margin-bottom: 10px;">
+<button onclick="location.href='https://cryptoodie.github.io/KASPA-VS.-BITCOIN-MINER-REVENUE-/'" style="padding: 2px 4px; font-size: 0.6em; font-weight: bold; border-radius: 4px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;">10 BPS</button>
+<button onclick="location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-32-BPS/'" style="padding: 2px 4px; font-size: 0.6em; font-weight: bold; border-radius: 4px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;">32 BPS</button>
+<button onclick="location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-100BPS/'" style="padding: 2px 4px; font-size: 0.6em; font-weight: bold; border-radius: 4px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0; background-color: #007BFF; color: white; border-color: #0056b3;">100 BPS</button>
+</div>
 </h1>
 <div style="text-align: center; margin-top: 20px;">
 <button onclick="toggleBubble('securityBubble')" style="font-size: 2.4em; line-height: 1.6; padding: 10px 20px; margin-right: 10px;">Security Budget<br/>-CLICK ME-</button>
@@ -153,6 +157,11 @@
   }
 </script>
 <div class="container">
+<div id="congestionInfoBubble" style="
+    position: absolute; top: 160px; left: 50%; transform: translateX(-50%);
+    background-color: #333; color: white; padding: 15px 25px; border-radius: 10px;
+    font-size: 2.1em; font-weight: bold; display: none; z-index: 10000;
+    pointer-events: none; transition: opacity 0.5s ease; border: 6px solid black;"><span style="color: #f7931a;">Bitcoin:</span> <span style="color: #00BFFF;">(604,800)</span> Max daily txn’s<br/><span style="color: #70C7BA;">Kaspa:</span> <span style="color: #00BFFF;">(2,592,000,000)</span> Max daily txn’s</div>
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Network Congestion</div>
 <div class="value" id="congestionValue" style=" text-align: left; font-size: 2em; font-weight: bold;">50%</div>
@@ -161,10 +170,20 @@
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Date</div>
 <div class="value" id="dateValue" style=" text-align: left; font-size: 2em; font-weight: bold;">2025, June 07</div>
+<div id="dateInfoBubble" style="
+    position: absolute; top: 160px; left: 50%; transform: translateX(-50%);
+    background-color: #333; color: white; padding: 20px 30px; border-radius: 10px;
+    font-size: 2em; font-weight: bold; display: none; z-index: 10000;
+    pointer-events: none; transition: opacity 0.5s ease; border: 6px solid black;">Notice the massive changes in block rewards as the Date is moved.</div>
 <input class="slider" id="dateSlider" max="193" min="0" type="range" value="43"/>
 </div>
 <div class="box">
-<div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">Fee Rate (USD)<br/><span class="value" id="feeValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></div>
+<div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">Average Fee Rate: $USD (per Single Transaction)<br/><span class="value" id="feeValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></div>
+<div id="feeInfoBubble" style="
+    position: absolute; top: 280px; left: 50%; transform: translateX(-50%);
+    background-color: #333; color: white; padding: 20px 30px; border-radius: 10px;
+    font-size: 2em; font-weight: bold; display: none; z-index: 10000;
+    pointer-events: none; transition: opacity 0.5s ease; border: 6px solid black;">How much Fee’s do you need to get adequate security?</div>
 <input class="slider" id="feeSlider" max="1000" min="0" type="range" value="250"/>
 </div>
 <div class="box">
@@ -249,7 +268,7 @@
     const btcReward = getBitcoinBlockReward(rewardDate);
 
       const kaspaBlock = kaspaRate * 86400 * kaspaPrice;
-      const kaspaFee = feeRate * 829440000 * (congestion / 100);
+      const kaspaFee = feeRate * 2592000000 * (congestion / 100);
       const kaspaTotal = kaspaBlock + kaspaFee;
 
       const btcBlock = btcReward * 144 * bitcoinPrice;
@@ -416,6 +435,44 @@ function updateExclamations() {
 }
 
 setInterval(updateExclamations, 300);
+</script><script>
+    const congestionSlider = document.getElementById("congestionSlider");
+    const congestionBubble = document.getElementById("congestionInfoBubble");
+    let hideTimeout;
+
+    congestionSlider.addEventListener("input", () => {
+        if (congestionBubble) {
+            congestionBubble.style.display = "block";
+            congestionBubble.style.opacity = "1";
+
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                congestionBubble.style.opacity = "0";
+                setTimeout(() => {
+                    congestionBubble.style.display = "none";
+                }, 500);
+            }, 1500);
+        }
+    });
+    </script><script>
+const dateSlider = document.getElementById("dateSlider");
+const dateInfoBubble = document.getElementById("dateInfoBubble");
+let hideDateTimeout;
+
+dateSlider.addEventListener("input", () => {
+    if (dateInfoBubble) {
+        dateInfoBubble.style.display = "block";
+        dateInfoBubble.style.opacity = "1";
+
+        clearTimeout(hideDateTimeout);
+        hideDateTimeout = setTimeout(() => {
+            dateInfoBubble.style.opacity = "0";
+            setTimeout(() => {
+                dateInfoBubble.style.display = "none";
+            }, 500);
+        }, 1500);
+    }
+});
 </script><script>
 const feeSlider = document.getElementById("feeSlider");
 const feeInfoBubble = document.getElementById("feeInfoBubble");
