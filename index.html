@@ -157,7 +157,6 @@
   }
 </script>
 <div class="container">
-
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Network Congestion</div>
 <div class="value" id="congestionValue" style=" text-align: left; font-size: 2em; font-weight: bold;">50%</div>
@@ -166,7 +165,6 @@
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Date</div>
 <div class="value" id="dateValue" style=" text-align: left; font-size: 2em; font-weight: bold;">2025, June 07</div>
-
 <input class="slider" id="dateSlider" max="193" min="0" type="range" value="43"/>
 </div>
 <div class="box">
@@ -427,44 +425,6 @@ function updateExclamations() {
 }
 
 setInterval(updateExclamations, 300);
-</script><script>
-    const congestionSlider = document.getElementById("congestionSlider");
-    const congestionBubble = document.getElementById("congestionInfoBubble");
-    let hideTimeout;
-
-    congestionSlider.addEventListener("input", () => {
-        if (congestionBubble) {
-            congestionBubble.style.display = "block";
-            congestionBubble.style.opacity = "1";
-
-            clearTimeout(hideTimeout);
-            hideTimeout = setTimeout(() => {
-                congestionBubble.style.opacity = "0";
-                setTimeout(() => {
-                    congestionBubble.style.display = "none";
-                }, 500);
-            }, 1500);
-        }
-    });
-    </script><script>
-const dateSlider = document.getElementById("dateSlider");
-const dateInfoBubble = document.getElementById("dateInfoBubble");
-let hideDateTimeout;
-
-dateSlider.addEventListener("input", () => {
-    if (dateInfoBubble) {
-        dateInfoBubble.style.display = "block";
-        dateInfoBubble.style.opacity = "1";
-
-        clearTimeout(hideDateTimeout);
-        hideDateTimeout = setTimeout(() => {
-            dateInfoBubble.style.opacity = "0";
-            setTimeout(() => {
-                dateInfoBubble.style.display = "none";
-            }, 500);
-        }, 1500);
-    }
-});
 </script><script>
 const feeSlider = document.getElementById("feeSlider");
 const feeInfoBubble = document.getElementById("feeInfoBubble");
