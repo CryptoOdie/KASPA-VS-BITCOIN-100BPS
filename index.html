@@ -106,6 +106,34 @@
 }
 </style>
 </head>
+
+<div style="position: fixed; top: 10px; left: 10px; z-index: 10000;">
+  <button onclick="toggleInfoModal()" style="padding: 10px 20px; font-size: 1.2em; font-weight: bold;">Info</button>
+</div>
+
+<div id="infoModal" onclick="toggleInfoModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8); color: white; padding: 40px; overflow-y: scroll; z-index: 9999; font-size: 1.6em;">
+  <div style="max-width: 800px; margin: auto;">
+    <h2>Simulation Information</h2>
+    <p><strong>Network Congestion:</strong> Simulates how full the network is. Higher congestion means more transactions competing for space, potentially raising fee levels.</p>
+    <p><strong>Date:</strong> Represents a timeline or scenario index for illustrative purposes. Adjusting this does not affect core calculations but may be used for simulation presets.</p>
+    <p><strong>Average Fee Rate: USD (per Single Transaction):</strong> Sets the average fee paid per transaction in USD. This is multiplied by the number of daily transactions to calculate total fee revenue.</p>
+    <p><strong>MarketCap:</strong> The total market capitalization of the asset (e.g., Bitcoin or Kaspa). This value influences the suggested minimum security budget (set to 2% annually).</p>
+    <p><strong>Suggested Daily Miner Revenue Minimum:</strong> A threshold calculated as 2% of the market cap divided by 365. This is the minimum amount that should go to miners each day to ensure adequate proof-of-work security.</p>
+    <p><strong>Block Reward:</strong> Represents the portion of miner revenue derived from newly minted coins.</p>
+    <p><strong>Fee Revenue:</strong> The portion of miner revenue derived from transaction fees. It depends on the fee rate and transaction volume.</p>
+    <p><strong>Daily Miner Revenue:</strong> Total revenue earned by miners per day. Calculated as block reward + fee revenue.</p>
+    <p>Click anywhere to close this window.</p>
+  </div>
+</div>
+
+<script>
+  function toggleInfoModal() {
+    const modal = document.getElementById('infoModal');
+    modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'block' : 'none';
+  }
+</script>
+
 <body style="background- color: black;">
 <div style="position: absolute; top: 20px; left: 40px; z-index: 9999;">
 </div>
