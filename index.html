@@ -112,18 +112,44 @@
 </div>
 
 <div id="infoModal" onclick="toggleInfoModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.8); color: white; padding: 40px; overflow-y: scroll; z-index: 9999; font-size: 1.6em;">
-  <div style="max-width: 800px; margin: auto;">
-    <h2>Simulation Information</h2>
-    <p><strong>Network Congestion:</strong> Simulates how full the network is. Higher congestion means more transactions competing for space, potentially raising fee levels.</p>
-    <p><strong>Date:</strong> Represents a timeline or scenario index for illustrative purposes. Adjusting this does not affect core calculations but may be used for simulation presets.</p>
-    <p><strong>Average Fee Rate: USD (per Single Transaction):</strong> Sets the average fee paid per transaction in USD. This is multiplied by the number of daily transactions to calculate total fee revenue.</p>
-    <p><strong>MarketCap:</strong> The total market capitalization of the asset (e.g., Bitcoin or Kaspa). This value influences the suggested minimum security budget (set to 2% annually).</p>
-    <p><strong>Suggested Daily Miner Revenue Minimum:</strong> A threshold calculated as 2% of the market cap divided by 365. This is the minimum amount that should go to miners each day to ensure adequate proof-of-work security.</p>
-    <p><strong>Block Reward:</strong> Represents the portion of miner revenue derived from newly minted coins.</p>
-    <p><strong>Fee Revenue:</strong> The portion of miner revenue derived from transaction fees. It depends on the fee rate and transaction volume.</p>
-    <p><strong>Daily Miner Revenue:</strong> Total revenue earned by miners per day. Calculated as block reward + fee revenue.</p>
-    <p>Click anywhere to close this window.</p>
+  background: rgba(0, 0, 0, 0.9); color: white; padding: 40px; overflow-y: scroll; z-index: 9999; font-size: 1.4em;">
+  <div style="max-width: 900px; margin: auto;">
+    <h2 style="text-align: center;">🧠 Simulation Reference Guide</h2>
+
+    <p><strong>🟦 Network Congestion:</strong><br>
+    This slider controls how congested the blockchain network is. Congestion represents how many blocks are being filled with transactions. A network running at 100% congestion is processing the maximum possible number of transactions per day.
+    In Kaspa’s case, this is based on block throughput (e.g., 300 txs per second at 100 BPS). Higher congestion means higher total daily transactions, which increases fee revenue.</p>
+
+    <p><strong>📆 Date:</strong><br>
+    This slider allows you to scrub through hypothetical dates or preset moments in time for educational and scenario-building purposes. It may also be used to anchor assumptions like fee environments or market states in future revisions of this calculator.</p>
+
+    <p><strong>💵 Average Fee Rate: USD (per Single Transaction):</strong><br>
+    This value determines the average fee paid for a single transaction. For example, if this is set to $10 and 1 million transactions occur, the total fee revenue is $10 million. This field is used to compute the <em>Fee Revenue</em> value. Kaspa’s scalability allows for lower fee rates with higher throughput.</p>
+
+    <p><strong>🏦 Market Cap:</strong><br>
+    Represents the total market capitalization of the asset being secured (e.g., Bitcoin or Kaspa). This is a critical input, as the calculator uses it to derive the suggested minimum security budget — defined here as 2% of the market cap per year, divided by 365 to find the daily minimum.</p>
+
+    <p><strong>🚨 Suggested Daily Miner Revenue Minimum:</strong><br>
+    This red panel calculates a 2% annual security budget as a baseline for defending a proof-of-work blockchain. It divides 2% of the market cap by 365 to estimate the daily revenue miners must earn to keep the network secure against a 51% attack. If daily miner revenue is below this threshold, the network may be economically vulnerable to attacks.</p>
+
+    <p><strong>🔶 Block Reward:</strong><br>
+    The amount miners receive from new coins being minted (i.e., inflationary issuance). In Bitcoin, this amount halves approximately every 4 years. In Kaspa, it reduces gradually every month. Block reward is a fixed calculation independent of fee activity and is added to miner revenue.</p>
+
+    <p><strong>🟩 Fee Revenue:</strong><br>
+    The total amount miners earn from transaction fees. It is calculated as:<br>
+    <code>Fee Revenue = Number of Transactions × Fee Rate</code><br>
+    This is directly influenced by network congestion and average fee rate. In a healthy system, this value should rise over time to replace falling block rewards.</p>
+
+    <p><strong>💰 Daily Miner Revenue:</strong><br>
+    This is the total compensation miners receive per day. It is the sum of:<br>
+    <code>Daily Miner Revenue = Block Reward + Fee Revenue</code><br>
+    This figure must ideally meet or exceed the Suggested Daily Miner Revenue Minimum to ensure network security is economically sustainable.</p>
+
+    <p><strong>🔘 Congestion Slider:</strong> Increases or decreases daily transactions as a percent of max capacity (set by BPS level). Affects fee revenue.</p>
+    <p><strong>🔘 Market Cap Slider:</strong> Adjusts total network value. Directly affects the 2% annual security budget calculation.</p>
+    <p><strong>🔘 Fee Rate Slider:</strong> Modifies the average fee per transaction. Combined with congestion, it determines fee revenue.</p>
+
+    <p style="margin-top: 30px; font-style: italic; color: #ccc;">Click anywhere to close this window.</p>
   </div>
 </div>
 
