@@ -553,5 +553,178 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-</script></body>
+</script>
+<script>
+let kaspaData = [];
+
+fetch('kaspa_emissions_from_2025_06_07.csv')
+  .then(response => response.text())
+  .then(data => {
+    const rows = data.split('\n').slice(1); // Skip header
+    kaspaData = rows.map(row => {
+      const [date, reward, dailyEmission, cumulative] = row.split(',');
+      return {
+        date: date,
+        reward: parseFloat(reward),
+        cumulative: parseFloat(cumulative)
+      };
+    });
+  });
+
+function getKaspaStatsByIndex(index) {
+  const i = index - 43;
+  if (i < 0 || i >= kaspaData.length) return { reward: 0, supply: 0 };
+  const row = kaspaData[i];
+  return {
+    reward: row.reward,
+    supply: row.cumulative
+  };
+}
+
+function updateKaspaStats(index, marketCap) {
+  const stats = getKaspaStatsByIndex(index);
+  const circulatingSupply = stats.supply || 0;
+  const kasPerSecond = stats.reward || 0;
+  const pricePerKas = circulatingSupply ? marketCap / circulatingSupply : 0;
+  const dailyKas = kasPerSecond * 86400;
+  const dailyRewardUSD = dailyKas * pricePerKas;
+
+  if (document.getElementById("kaspa-circulating"))
+    document.getElementById("kaspa-circulating").innerText = circulatingSupply.toLocaleString();
+
+  if (document.getElementById("kaspa-kas-sec"))
+    document.getElementById("kaspa-kas-sec").innerText = kasPerSecond.toFixed(3);
+
+  if (document.getElementById("kaspa-daily-usd"))
+    document.getElementById("kaspa-daily-usd").innerText = "$" + dailyRewardUSD.toLocaleString(undefined, {maximumFractionDigits: 2});
+}
+</script>
+
+
+<script>
+let kaspaData = [];
+
+function getKaspaStatsByIndex(index) {
+  const i = index - 43;
+  if (i < 0 || i >= kaspaData.length) return { reward: 0, supply: 0 };
+  const row = kaspaData[i];
+  return {
+    reward: row.reward,
+    supply: row.cumulative
+  };
+}
+
+function updateKaspaStats(index, marketCap) {
+  const stats = getKaspaStatsByIndex(index);
+  const circulatingSupply = stats.supply || 0;
+  const kasPerSecond = stats.reward || 0;
+  const pricePerKas = circulatingSupply ? marketCap / circulatingSupply : 0;
+  const dailyKas = kasPerSecond * 86400;
+  const dailyRewardUSD = dailyKas * pricePerKas;
+
+  if (document.getElementById("kaspa-circulating"))
+    document.getElementById("kaspa-circulating").innerText = circulatingSupply.toLocaleString();
+
+  if (document.getElementById("kaspa-kas-sec"))
+    document.getElementById("kaspa-kas-sec").innerText = kasPerSecond.toFixed(3);
+
+  if (document.getElementById("kaspa-daily-usd"))
+    document.getElementById("kaspa-daily-usd").innerText = "$" + dailyRewardUSD.toLocaleString(undefined, {maximumFractionDigits: 2});
+}
+
+fetch('kaspa_emissions_from_2025_06_07.csv')
+  .then(response => response.text())
+  .then(data => {
+    const rows = data.split('\n').slice(1); // Skip header
+    kaspaData = rows.map(row => {
+      const [date, reward, dailyEmission, cumulative] = row.split(',');
+      return {
+        date: date,
+        reward: parseFloat(reward),
+        cumulative: parseFloat(cumulative)
+      };
+    });
+
+    // After data loads, hook slider + market cap
+    const slider = document.getElementById("dateSlider");
+    const marketCapInput = document.getElementById("marketCapInput");
+
+    function updateFromInputs() {
+      const index = parseInt(slider.value, 10);
+      const marketCap = parseFloat(marketCapInput.value.replace(/[^0-9.]/g, "")) || 0;
+      updateKaspaStats(index, marketCap);
+    }
+
+    slider.addEventListener("input", updateFromInputs);
+    marketCapInput.addEventListener("input", updateFromInputs);
+
+    // Trigger initial update
+    updateFromInputs();
+  });
+</script>
+
+
+<script>
+let kaspaData = [];
+
+function getKaspaStatsByIndex(index) {
+  const i = index - 43;
+  if (i < 0 || i >= kaspaData.length) return { reward: 0, supply: 0 };
+  const row = kaspaData[i];
+  return {
+    reward: row.reward,
+    supply: row.cumulative
+  };
+}
+
+function updateKaspaStats(index, marketCap) {
+  const stats = getKaspaStatsByIndex(index);
+  const circulatingSupply = stats.supply || 0;
+  const kasPerSecond = stats.reward || 0;
+  const pricePerKas = circulatingSupply ? marketCap / circulatingSupply : 0;
+  const dailyKas = kasPerSecond * 86400;
+  const dailyRewardUSD = dailyKas * pricePerKas;
+
+  if (document.getElementById("kaspa-circulating"))
+    document.getElementById("kaspa-circulating").innerText = circulatingSupply.toLocaleString();
+
+  if (document.getElementById("kaspa-kas-sec"))
+    document.getElementById("kaspa-kas-sec").innerText = kasPerSecond.toFixed(3);
+
+  if (document.getElementById("kaspa-daily-usd"))
+    document.getElementById("kaspa-daily-usd").innerText = "$" + dailyRewardUSD.toLocaleString(undefined, {maximumFractionDigits: 2});
+}
+
+fetch('kaspa_emissions_corrected_supply.csv')
+  .then(response => response.text())
+  .then(data => {
+    const rows = data.split('\n').slice(1); // Skip header
+    kaspaData = rows.map(row => {
+      const [date, reward, dailyEmission, cumulative] = row.split(',');
+      return {
+        date: date,
+        reward: parseFloat(reward),
+        cumulative: parseFloat(cumulative)
+      };
+    });
+
+    // After data loads, hook slider + market cap
+    const slider = document.getElementById("dateSlider");
+    const marketCapInput = document.getElementById("marketCapInput");
+
+    function updateFromInputs() {
+      const index = parseInt(slider.value, 10);
+      const marketCap = parseFloat(marketCapInput.value.replace(/[^0-9.]/g, "")) || 0;
+      updateKaspaStats(index, marketCap);
+    }
+
+    slider.addEventListener("input", updateFromInputs);
+    marketCapInput.addEventListener("input", updateFromInputs);
+
+    // Trigger initial update
+    updateFromInputs();
+  });
+</script>
+
+</body>
 </html>
