@@ -552,7 +552,7 @@ function updateGreenChecks() {
         if (!box) return;
         const raw = box.textContent.replace(/✅/g, "").trim();
         if (value >= minVal) {
-            box.innerText = raw + " ✅";
+            box.innerText = "✅ " + raw + " ✅";
         } else {
             box.innerText = raw;
         }
