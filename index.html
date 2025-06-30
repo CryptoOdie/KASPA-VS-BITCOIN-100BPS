@@ -106,60 +106,46 @@
 }
 </style>
 </head>
-
 <div style="position: fixed; top: 10px; left: 10px; z-index: 10000;">
-  <button onclick="toggleInfoModal()" style="padding: 10px 20px; font-size: 1.5em; font-weight: bold;">Info</button>
+<button onclick="toggleInfoModal()" style="padding: 10px 20px; font-size: 1.5em; font-weight: bold;">Info</button>
 </div>
-
 <div id="infoModal" onclick="toggleInfoModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.9); color: white; padding: 40px; overflow-y: auto; scroll-behavior: smooth; z-index: 9999; font-size: 1.4em;">
-  <div style="max-width: 900px; margin: auto;">
-    <h2 style="text-align: center;">🧠 Simulation Reference Guide</h2>
-
-    <p><strong>🟦 Network Congestion:</strong><br>
+<div style="max-width: 900px; margin: auto;">
+<h2 style="text-align: center;">🧠 Simulation Reference Guide</h2>
+<p><strong>🟦 Network Congestion:</strong><br/>
     This slider controls how congested the blockchain network is. Congestion represents how many blocks are being filled with transactions. A network running at 100% congestion is processing the maximum possible number of transactions per day.
     In Kaspa’s case, this is based on block throughput (e.g., 30,000 txs per second at 100 BPS). Higher congestion means higher total daily transactions, which increases fee revenue.</p>
-
-    <p><strong>📆 Date:</strong><br>
+<p><strong>📆 Date:</strong><br/>
     This slider allows you to scrub through hypothetical dates or preset moments in time for educational and scenario-building purposes. It may also be used to anchor assumptions like fee environments or market states in future revisions of this calculator.</p>
-
-    <p><strong>💵 Average Fee Rate: USD (per Single Transaction):</strong><br>
+<p><strong>💵 Average Fee Rate: USD (per Single Transaction):</strong><br/>
     This value determines the average fee paid for a single transaction. For example, if this is set to $10 and 1 million transactions occur, the total fee revenue is $10 million. This field is used to compute the <em>Fee Revenue</em> value. Kaspa’s scalability allows for lower fee rates with higher throughput.</p>
-
-    <p><strong>🏦 Market Cap:</strong><br>
+<p><strong>🏦 Market Cap:</strong><br/>
     Represents the total market capitalization of the asset being secured (e.g., Bitcoin or Kaspa). This is a critical input, as the calculator uses it to derive the suggested minimum security budget — defined here as 2% of the market cap per year, divided by 365 to find the daily minimum.</p>
-
-    <p><strong>🚨 Suggested Daily Miner Revenue Minimum:</strong><br>
+<p><strong>🚨 Suggested Daily Miner Revenue Minimum:</strong><br/>
     This red panel calculates a 2% annual security budget as a baseline for defending a proof-of-work blockchain. It divides 2% of the market cap by 365 to estimate the daily revenue miners must earn to keep the network secure against a 51% attack. If daily miner revenue is below this threshold, the network may be economically vulnerable to attacks.</p>
-
-    <p><strong>🔶 Block Reward:</strong><br>
+<p><strong>🔶 Block Reward:</strong><br/>
     The amount miners receive from new coins being minted (i.e., inflationary issuance). In Bitcoin, this amount halves approximately every 4 years. In Kaspa, it reduces gradually every month. Block reward is a fixed calculation independent of fee activity and is added to miner revenue.</p>
-
-    <p><strong>🟩 Fee Revenue:</strong><br>
-    The total amount miners earn from transaction fees. It is calculated as:<br>
-    <code>Fee Revenue = Number of Transactions × Fee Rate</code><br>
+<p><strong>🟩 Fee Revenue:</strong><br/>
+    The total amount miners earn from transaction fees. It is calculated as:<br/>
+<code>Fee Revenue = Number of Transactions × Fee Rate</code><br/>
     This is directly influenced by network congestion and average fee rate. In a healthy system, this value should rise over time to replace falling block rewards.</p>
-
-    <p><strong>💰 Daily Miner Revenue:</strong><br>
-    This is the total compensation miners receive per day. It is the sum of:<br>
-    <code>Daily Miner Revenue = Block Reward + Fee Revenue</code><br>
+<p><strong>💰 Daily Miner Revenue:</strong><br/>
+    This is the total compensation miners receive per day. It is the sum of:<br/>
+<code>Daily Miner Revenue = Block Reward + Fee Revenue</code><br/>
     This figure must ideally meet or exceed the Suggested Daily Miner Revenue Minimum to ensure network security is economically sustainable.</p>
-
-    <p><strong>🔘 Congestion Slider:</strong> Increases or decreases daily transactions as a percent of max capacity (set by BPS level). Affects fee revenue.</p>
-    <p><strong>🔘 Market Cap Slider:</strong> Adjusts total network value. Directly affects the 2% annual security budget calculation.</p>
-    <p><strong>🔘 Fee Rate Slider:</strong> Modifies the average fee per transaction. Combined with congestion, it determines fee revenue.</p>
-
-    <p style="margin-top: 30px; font-style: italic; color: #ccc;">Click anywhere to close this window.</p>
-  </div>
+<p><strong>🔘 Congestion Slider:</strong> Increases or decreases daily transactions as a percent of max capacity (set by BPS level). Affects fee revenue.</p>
+<p><strong>🔘 Market Cap Slider:</strong> Adjusts total network value. Directly affects the 2% annual security budget calculation.</p>
+<p><strong>🔘 Fee Rate Slider:</strong> Modifies the average fee per transaction. Combined with congestion, it determines fee revenue.</p>
+<p style="margin-top: 30px; font-style: italic; color: #ccc;">Click anywhere to close this window.</p>
 </div>
-
+</div>
 <script>
   function toggleInfoModal() {
     const modal = document.getElementById('infoModal');
     modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'block' : 'none';
   }
 </script>
-
 <body style="background- color: black;">
 <div style="position: absolute; top: 20px; left: 40px; z-index: 9999;">
 </div>
@@ -172,20 +158,20 @@
 </div>
 </h1>
 <div style="text-align: center; margin-top: 20px;">
-<button onclick="toggleBubble('securityBubble')" style="font-size: 2.4em; line-height: 1.6; padding: 10px 20px; margin-right: 10px;">Security Budget<br/>-CLICK ME-</button>
-<button onclick="toggleBubble('exampleBubble')" style="font-size: 2.4em; line-height: 1.6; padding: 10px 20px;">Example<br/>-CLICK ME-</button>
+<button onclick="toggleBubble('securityBubble')" style="font-size: 2.4em; line-height: 1.6; padding: 10px 20px; margin-right: 10px;">Security Budget<br>-CLICK ME-</br></button>
+<button onclick="toggleBubble('exampleBubble')" style="font-size: 2.4em; line-height: 1.6; padding: 10px 20px;">Example<br>-CLICK ME-</br></button>
 </div>
 <div id="securityBubble" onclick="toggleBubble('securityBubble')" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   max-width: 700px; background: #222; color: #fff; padding: 30px; border-radius: 15px; z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); font-size: 2.2em; line-height: 1.6;">
-<p>~~~~~~~~~~~~~~~~~~~~~~~~<br/>
-  Security Budget = Miner Revenue<br/>
-  ~~~~~~~~~~~~~~~~~~~~~~~~</p>
-<p>Miner Revenue<br/>
-  =<br/>
-  Block Rewards<br/>
-  +<br/>
-  Fee Revenue<br/>
-  ~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>~~~~~~~~~~~~~~~~~~~~~~~~<br>
+  Security Budget = Miner Revenue<br>
+  ~~~~~~~~~~~~~~~~~~~~~~~~</br></br></p>
+<p>Miner Revenue<br>
+  =<br>
+  Block Rewards<br>
+  +<br>
+  Fee Revenue<br>
+  ~~~~~~~~~~~~~~~~~~~~~~~~</br></br></br></br></br></p>
 <p>Historical analysis suggests that approximately 2–3% of Bitcoin’s market cap has been sufficient to protect 51% of the network’s hash power.</p>
 <p>For Kaspa, with its identical 51% BFT design, this security budget estimate applies exactly the same.</p>
 <p><span style="color: red;"><strong>“Suggested Daily Miner Revenue Minimum:”</strong></span> calculates a 2% security budget. Without this, PoW networks are potentially unstable.</p>
@@ -214,21 +200,20 @@
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Network Congestion</div>
 <div class="value" id="congestionValue" style=" text-align: left; font-size: 2em; font-weight: bold;">50%</div>
-<input class="slider" id="congestionSlider" max="100" min="1" type="range" value="50"/>
+<input class="slider" id="congestionSlider" max="100" min="1" type="range" value="100"/>
 </div>
 <div class="box">
 <div class="label" style=" text-align: left; font-size: 2em; font-weight: bold;">Date</div>
 <div class="value" id="dateValue" style=" text-align: left; font-size: 2em; font-weight: bold;">2025, June 07</div>
-<input class="slider" id="dateSlider" min="43" max="193" value="43" step="1" type="range"/>
+<input class="slider" id="dateSlider" max="193" min="43" step="1" type="range" value="193"/>
 </div>
 <div class="box">
-<div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">Fee Rate (USD) Per Single Transaction<br/><span class="value" id="feeValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></div>
-
+<div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">Fee Rate (USD) Per Single Transaction<br><span class="value" id="feeValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></br></div>
 <input class="slider" id="feeSlider" max="1000" min="0" type="range" value="250"/>
 </div>
 <div class="box">
-<div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">MarketCap<br/><span class="value" id="marketCapValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></div>
-<input class="slider" id="marketCapSlider" max="1000" min="0" type="range" value="0"/>
+<div class="label" style=" text-align: left; font-size: 1.5em; font-weight: bold;">MarketCap<br><span class="value" id="marketCapValue" style=" font-size: 1.5em; font-weight: bold;">$0.00</span></br></div>
+<input class="slider" id="marketCapSlider" max="1000" min="0" type="range" value="364"/>
 </div>
 </div>
 <div id="floating-minimum-panel" style="width: 100%; background-color: red; color: white; text-align: center; padding: 10px 0; font-size: 1.4em; font-weight: bold; margin: 30px auto;"><div style="display: flex; justify-content: center; align-items: center; gap: 20px; font-size: 1.4em;">Suggested Daily Miner Revenue Minimum: <span id="securityRevenueValue" style="font-size: 1.4em; font-weight: bold; color: black; margin: 0;">$0.00</span></div></div><div style="display: flex; justify-content: center; margin-top: 40px;">
@@ -553,178 +538,30 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-</script>
-<script>
-let kaspaData = [];
+</script><script>
+function updateGreenChecks() {
+    const minText = document.getElementById("securityRevenueValue")?.innerText;
+    const kaspaBox = document.getElementById("kaspaTotalBox");
+    const btcBox = document.getElementById("btcTotalBox");
 
-fetch('kaspa_emissions_from_2025_06_07.csv')
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.split('\n').slice(1); // Skip header
-    kaspaData = rows.map(row => {
-      const [date, reward, dailyEmission, cumulative] = row.split(',');
-      return {
-        date: date,
-        reward: parseFloat(reward),
-        cumulative: parseFloat(cumulative)
-      };
-    });
-  });
+    const kaspaVal = parseAbbreviatedNumber(kaspaBox?.textContent);
+    const btcVal = parseAbbreviatedNumber(btcBox?.textContent);
+    const minVal = parseAbbreviatedNumber(minText);
 
-function getKaspaStatsByIndex(index) {
-  const i = index - 43;
-  if (i < 0 || i >= kaspaData.length) return { reward: 0, supply: 0 };
-  const row = kaspaData[i];
-  return {
-    reward: row.reward,
-    supply: row.cumulative
-  };
-}
-
-function updateKaspaStats(index, marketCap) {
-  const stats = getKaspaStatsByIndex(index);
-  const circulatingSupply = stats.supply || 0;
-  const kasPerSecond = stats.reward || 0;
-  const pricePerKas = circulatingSupply ? marketCap / circulatingSupply : 0;
-  const dailyKas = kasPerSecond * 86400;
-  const dailyRewardUSD = dailyKas * pricePerKas;
-
-  if (document.getElementById("kaspa-circulating"))
-    document.getElementById("kaspa-circulating").innerText = circulatingSupply.toLocaleString();
-
-  if (document.getElementById("kaspa-kas-sec"))
-    document.getElementById("kaspa-kas-sec").innerText = kasPerSecond.toFixed(3);
-
-  if (document.getElementById("kaspa-daily-usd"))
-    document.getElementById("kaspa-daily-usd").innerText = "$" + dailyRewardUSD.toLocaleString(undefined, {maximumFractionDigits: 2});
-}
-</script>
-
-
-<script>
-let kaspaData = [];
-
-function getKaspaStatsByIndex(index) {
-  const i = index - 43;
-  if (i < 0 || i >= kaspaData.length) return { reward: 0, supply: 0 };
-  const row = kaspaData[i];
-  return {
-    reward: row.reward,
-    supply: row.cumulative
-  };
-}
-
-function updateKaspaStats(index, marketCap) {
-  const stats = getKaspaStatsByIndex(index);
-  const circulatingSupply = stats.supply || 0;
-  const kasPerSecond = stats.reward || 0;
-  const pricePerKas = circulatingSupply ? marketCap / circulatingSupply : 0;
-  const dailyKas = kasPerSecond * 86400;
-  const dailyRewardUSD = dailyKas * pricePerKas;
-
-  if (document.getElementById("kaspa-circulating"))
-    document.getElementById("kaspa-circulating").innerText = circulatingSupply.toLocaleString();
-
-  if (document.getElementById("kaspa-kas-sec"))
-    document.getElementById("kaspa-kas-sec").innerText = kasPerSecond.toFixed(3);
-
-  if (document.getElementById("kaspa-daily-usd"))
-    document.getElementById("kaspa-daily-usd").innerText = "$" + dailyRewardUSD.toLocaleString(undefined, {maximumFractionDigits: 2});
-}
-
-fetch('kaspa_emissions_from_2025_06_07.csv')
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.split('\n').slice(1); // Skip header
-    kaspaData = rows.map(row => {
-      const [date, reward, dailyEmission, cumulative] = row.split(',');
-      return {
-        date: date,
-        reward: parseFloat(reward),
-        cumulative: parseFloat(cumulative)
-      };
-    });
-
-    // After data loads, hook slider + market cap
-    const slider = document.getElementById("dateSlider");
-    const marketCapInput = document.getElementById("marketCapInput");
-
-    function updateFromInputs() {
-      const index = parseInt(slider.value, 10);
-      const marketCap = parseFloat(marketCapInput.value.replace(/[^0-9.]/g, "")) || 0;
-      updateKaspaStats(index, marketCap);
+    function decorateCheck(box, value) {
+        if (!box) return;
+        const raw = box.textContent.replace(/✅/g, "").trim();
+        if (value >= minVal) {
+            box.innerText = raw + " ✅";
+        } else {
+            box.innerText = raw;
+        }
     }
 
-    slider.addEventListener("input", updateFromInputs);
-    marketCapInput.addEventListener("input", updateFromInputs);
-
-    // Trigger initial update
-    updateFromInputs();
-  });
-</script>
-
-
-<script>
-let kaspaData = [];
-
-function getKaspaStatsByIndex(index) {
-  const i = index - 43;
-  if (i < 0 || i >= kaspaData.length) return { reward: 0, supply: 0 };
-  const row = kaspaData[i];
-  return {
-    reward: row.reward,
-    supply: row.cumulative
-  };
+    decorateCheck(kaspaBox, kaspaVal);
+    decorateCheck(btcBox, btcVal);
 }
 
-function updateKaspaStats(index, marketCap) {
-  const stats = getKaspaStatsByIndex(index);
-  const circulatingSupply = stats.supply || 0;
-  const kasPerSecond = stats.reward || 0;
-  const pricePerKas = circulatingSupply ? marketCap / circulatingSupply : 0;
-  const dailyKas = kasPerSecond * 86400;
-  const dailyRewardUSD = dailyKas * pricePerKas;
-
-  if (document.getElementById("kaspa-circulating"))
-    document.getElementById("kaspa-circulating").innerText = circulatingSupply.toLocaleString();
-
-  if (document.getElementById("kaspa-kas-sec"))
-    document.getElementById("kaspa-kas-sec").innerText = kasPerSecond.toFixed(3);
-
-  if (document.getElementById("kaspa-daily-usd"))
-    document.getElementById("kaspa-daily-usd").innerText = "$" + dailyRewardUSD.toLocaleString(undefined, {maximumFractionDigits: 2});
-}
-
-fetch('kaspa_emissions_corrected_supply.csv')
-  .then(response => response.text())
-  .then(data => {
-    const rows = data.split('\n').slice(1); // Skip header
-    kaspaData = rows.map(row => {
-      const [date, reward, dailyEmission, cumulative] = row.split(',');
-      return {
-        date: date,
-        reward: parseFloat(reward),
-        cumulative: parseFloat(cumulative)
-      };
-    });
-
-    // After data loads, hook slider + market cap
-    const slider = document.getElementById("dateSlider");
-    const marketCapInput = document.getElementById("marketCapInput");
-
-    function updateFromInputs() {
-      const index = parseInt(slider.value, 10);
-      const marketCap = parseFloat(marketCapInput.value.replace(/[^0-9.]/g, "")) || 0;
-      updateKaspaStats(index, marketCap);
-    }
-
-    slider.addEventListener("input", updateFromInputs);
-    marketCapInput.addEventListener("input", updateFromInputs);
-
-    // Trigger initial update
-    updateFromInputs();
-  });
-</script>
-
-</body>
+setInterval(updateGreenChecks, 300);
+</script></body>
 </html>
