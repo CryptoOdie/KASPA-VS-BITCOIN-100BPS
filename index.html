@@ -309,29 +309,52 @@
 <h2 style="text-align: center;">🧠 Simulation Reference Guide</h2>
 <p><strong>🟦 Network Congestion:</strong><br/>
     This slider controls how congested the blockchain network is. Congestion represents how many blocks are being filled with transactions. A network running at 100% congestion is processing the maximum possible number of transactions per day.
-    In Kaspa’s case, this is based on block throughput (e.g., 30,000 txs per second at 100 BPS). Higher congestion means higher total daily transactions, which increases <span class="section-red">fee revenue / Day</span>.</p>
+    In Kaspa’s case, this is based on block throughput (e.g., 30,000 txs per second at 100 BPS). Higher congestion means higher total daily transactions, which increases fee revenue / Day.</p>
 <p><strong>📆 Date:</strong><br/>
     This slider allows you to scrub through hypothetical dates or preset moments in time for educational and scenario-building purposes. It may also be used to anchor assumptions like fee environments or market states in future revisions of this calculator.</p>
 <p><strong>💵 Average Fee Rate: USD (per Single Transaction):</strong><br/>
-    This value determines the average fee paid for a single transaction. For example, if this is set to $10 and 1 million transactions occur, the total <span class="section-red">fee revenue / Day</span> is $10 million. This field is used to compute the <em><span class="section-red">Fee Revenue / Day</span></em> value. Kaspa’s scalability allows for lower fee rates with higher throughput.</p>
+    This value determines the average fee paid for a single transaction. For example, if this is set to $10 and 1 million transactions occur, the total fee revenue / Day is $10 million. This field is used to compute the <em>Fee Revenue / Day</em> value. Kaspa’s scalability allows for lower fee rates with higher throughput.</p>
 <p><strong>🏦 Market Cap:</strong><br/>
-    Represents the total market capitalization of the asset being secured (e.g., Bitcoin or Kaspa). This is a critical input, as the calculator uses it to derive the suggested minimum <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> — defined here as 2% of the market cap per year, divided by 365 to find the daily minimum.</p>
+    Represents the total market capitalization of the asset being secured (e.g., Bitcoin or Kaspa). This is a critical input, as the calculator uses it to derive the suggested minimum SECURITY BUDGET / Day — defined here as 2% of the market cap per year, divided by 365 to find the daily minimum.</p>
 <p><strong>🚨 <span style="text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">SECURITY BUDGET REQUIREMENT  =</span></strong><br/>
-    This red panel shows an adjustable annual <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> (0.5%–1.5%), defaulting to 1.5% as a baseline for defending a proof-of-work blockchain. It divides the chosen percentage of the market cap by 365 to estimate the daily revenue miners must earn to keep the network secure against a 51% attack. If daily miner revenue is below this threshold, the network may be economically vulnerable to attacks.</p>
-<p><strong>🔶 <span class="section-red">Block Reward / Day</span>:</strong><br/>
-    The amount miners receive from new coins being minted (i.e., inflationary issuance). In Bitcoin, this amount halves approximately every 4 years. In Kaspa, it reduces gradually every month. <span class="section-red">Block reward / Day</span> is a fixed calculation independent of fee activity and is added to miner revenue.</p>
-<p><strong>🟩 <span class="section-red">Fee Revenue / Day</span>:</strong><br/>
+    This red panel shows an adjustable annual SECURITY BUDGET / Day (0.5%–1.5%), defaulting to 1.5% as a baseline for defending a proof-of-work blockchain. It divides the chosen percentage of the market cap by 365 to estimate the daily revenue miners must earn to keep the network secure against a 51% attack. If daily miner revenue is below this threshold, the network may be economically vulnerable to attacks.</p>
+<p><strong>🔶 Block Reward / Day:</strong><br/>
+    The amount miners receive from new coins being minted (i.e., inflationary issuance). In Bitcoin, this amount halves approximately every 4 years. In Kaspa, it reduces gradually every month. Block reward / Day is a fixed calculation independent of fee activity and is added to miner revenue.</p>
+<p><strong>🟩 Fee Revenue / Day:</strong><br/>
     The total amount miners earn from transaction fees. It is calculated as:<br/>
-<code><span class="section-red">Fee Revenue / Day</span> = Number of Transactions × Fee Rate</code><br/>
-    This is directly influenced by network congestion and average fee rate. In a healthy system, this value should rise over time to replace falling <span class="section-red">block reward / Day</span>s.</p>
+<code>Fee Revenue / Day = Number of Transactions × Fee Rate</code><br/>
+    This is directly influenced by network congestion and average fee rate. In a healthy system, this value should rise over time to replace falling block reward / Days.</p>
 <p><strong>💰 Daily Miner Revenue:</strong><br/>
     This is the total compensation miners receive per day. It is the sum of:<br/>
-<code>Daily Miner Revenue = <span class="section-red">Block Reward / Day</span> + <span class="section-red">Fee Revenue / Day</span></code><br/>
-    This figure must ideally meet or exceed the <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> Minimum to ensure network security is economically sustainable.</p>
-<p><strong>🔘 Congestion Slider:</strong> Increases or decreases daily transactions as a percent of max capacity (set by BPS level). Affects <span class="section-red">fee revenue / Day</span>.</p>
-<p><strong>🔘 Market Cap Slider:</strong> Adjusts total network value. Directly affects the 2% annual <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> calculation.</p>
-<p><strong>🔘 Fee Rate Slider:</strong> Modifies the average fee per transaction. Combined with congestion, it determines <span class="section-red">fee revenue / Day</span>.</p>
+<code>Daily Miner Revenue = Block Reward / Day + Fee Revenue / Day</code><br/>
+    This figure must ideally meet or exceed the SECURITY BUDGET / Day Minimum to ensure network security is economically sustainable.</p>
+<p><strong>🔘 Congestion Slider:</strong> Increases or decreases daily transactions as a percent of max capacity (set by BPS level). Affects fee revenue / Day.</p>
+<p><strong>🔘 Market Cap Slider:</strong> Adjusts total network value. Directly affects the 2% annual SECURITY BUDGET / Day calculation.</p>
+<p><strong>🔘 Fee Rate Slider:</strong> Modifies the average fee per transaction. Combined with congestion, it determines fee revenue / Day.</p>
 <p style="margin-top: 30px; font-style: italic; color: #ccc;">Click anywhere to close this window.</p>
+<hr style="margin:24px 0; opacity:0.4;">
+<h3 style="text-align:center; margin:8px 0 14px;">Math quick reference</h3>
+<ul style="line-height:1.6; margin:0 0 10px 18px;">
+  <li><code>Security&nbsp;Budget&nbsp;/&nbsp;Day = (SB%&nbsp;per&nbsp;year × Market&nbsp;Cap) / 365</code></li>
+  <li><code>Daily&nbsp;Miner&nbsp;Revenue = Block&nbsp;Reward&nbsp;/&nbsp;Day + Fee&nbsp;Revenue&nbsp;/&nbsp;Day</code></li>
+  <li><code>Fee&nbsp;Revenue&nbsp;/&nbsp;Day = Transactions&nbsp;per&nbsp;Day × Fee&nbsp;per&nbsp;Tx</code></li>
+  <li><code>Transactions&nbsp;per&nbsp;Day = MaxTPS(BPS) × 86,400 × Congestion%</code></li>
+</ul>
+
+<h3 style="text-align:center; margin:16px 0 10px;">How to read the sliders</h3>
+<ol style="line-height:1.6; margin:0 0 10px 18px;">
+  <li><strong>Market Cap</strong> → sets the target <em>Security Budget / Day</em> via the SB% selector.</li>
+  <li><strong>Fee Rate</strong> and <strong>Congestion</strong> → together set <em>Fee Revenue / Day</em>.</li>
+  <li><strong>Block Reward / Day</strong> → comes from the emission schedule for the chosen date.</li>
+  <li><strong>Compare</strong> <em>Daily Miner Revenue</em> to the <em>Security Budget / Day</em> target.</li>
+</ol>
+
+<h3 style="text-align:center; margin:16px 0 10px;">Preset notes</h3>
+<ul style="line-height:1.6; margin:0 0 6px 18px;">
+  <li><strong>10 / 32 / 100&nbsp;BPS</strong> pages differ only in assumed throughput: <code>MaxTPS(BPS)</code> is preset-dependent.</li>
+  <li>The math above is identical across presets; only <code>Transactions per Day</code> capacity changes.</li>
+</ul>
+
 </div>
 </div>
 <script>
@@ -345,9 +368,9 @@
 </div>
 <h1 style="text-align:center; font-size: 6em; margin-top:10px;">
 <span style="color:#70C7BA;">Kaspa</span> vs. <span style="color:#FF9900;">Bitcoin</span><div style="display: flex; justify-content: flex-start; gap: 6px; margin-top: 10px; margin-bottom: 10px;">
-<button onclick="location.href='10_bps_index27.html'" style="padding: 1px 2px; font-size: 0.4em; font-weight: bold; border-radius: 2px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;   ">10 BPS</button>
-<button onclick="location.href='32_bps_index27.html'" style="padding: 1px 2px; font-size: 0.4em; font-weight: bold; border-radius: 2px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;">32 BPS</button>
-<button onclick="location.href='100_bps_index27.html'" style="padding: 1px 2px; font-size: 0.4em; font-weight: bold; border-radius: 2px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0; background-color: #007BFF; color: white; border-color: #0056b3;">100 BPS</button>
+<button onclick="location.href='https://cryptoodie.github.io/KASPA-VS.-BITCOIN-MINER-REVENUE-/'" style="padding: 1px 2px; font-size: 0.4em; font-weight: bold; border-radius: 2px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;   ">10 BPS</button>
+<button onclick="location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-32-BPS/'" style="padding: 1px 2px; font-size: 0.4em; font-weight: bold; border-radius: 2px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0;">32 BPS</button>
+<button onclick="location.href='https://cryptoodie.github.io/KASPA-VS-BITCOIN-100BPS/'" style="padding: 1px 2px; font-size: 0.4em; font-weight: bold; border-radius: 2px; margin: 0 2px; border: 1px solid #ccc; background-color: #f0f0f0; background-color: #007BFF; color: white; border-color: #0056b3;">100 BPS</button>
 </div></h1>
 <div style="text-align: center; margin-top: 20px;">
 
@@ -356,27 +379,27 @@
 <div id="securityBubble" onclick="toggleBubble('securityBubble')" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   max-width: 700px; background: #222; color: #fff; padding: 30px; border-radius: 15px; z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); font-size: 2.2em; line-height: 1.6;">
 <p>~~~~~~~~~~~~~~~~~~~~~~~~<br/>
-  <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> = Miner Revenue<br/>
+  SECURITY BUDGET / Day = Miner Revenue<br/>
   ~~~~~~~~~~~~~~~~~~~~~~~~</p>
 <p>Miner Revenue<br/>
   =<br/>
-  <span class="section-red">Block Reward / Day</span>s<br/>
+  Block Reward / Days<br/>
   +<br/>
-  <span class="section-red">Fee Revenue / Day</span><br/>
+  Fee Revenue / Day<br/>
   ~~~~~~~~~~~~~~~~~~~~~~~~</p>
 <p>Historical analysis suggests that approximately 2–3% of Bitcoin’s market cap has been sufficient to protect 51% of the network’s hash power.</p>
-<p>For Kaspa, with its identical 51% BFT design, this <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> estimate applies exactly the same.</p>
-<p><span style="color: red;"><strong>“<span style="text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">SECURITY BUDGET REQUIREMENT  =</span>”</strong></span> calculates a 2% <span class="section-red section-budget-large">SECURITY BUDGET / Day</span>. Without this, PoW networks are potentially unstable.</p>
+<p>For Kaspa, with its identical 51% BFT design, this SECURITY BUDGET / Day estimate applies exactly the same.</p>
+<p><span style=""><strong>“<span style="text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">SECURITY BUDGET REQUIREMENT  =</span>”</strong></span> calculates a 2% SECURITY BUDGET / Day. Without this, PoW networks are potentially unstable.</p>
 <p><a href="https://www.lynalden.com/bitcoin-security-modeling/" style="color: #00ffff;" target="_blank">https://www.lynalden.com/bitcoin-security-modeling/</a></p>
 </div>
 <div id="exampleBubble" onclick="toggleBubble('exampleBubble')" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   max-width: 700px; background: #222; color: #fff; padding: 30px; border-radius: 15px; z-index: 9999; box-shadow: 0 0 20px rgba(0,0,0,0.5); font-size: 2.4em; line-height: 1.6;">
 <p><span style="color: #00FFFF;">If the market cap is <strong>$1 trillion</strong></span>, then roughly <span style="color: #FFD700;"><strong>$20 billion per year</strong></span> 
   (or about <span style="color: #ADFF2F;"><strong>$54.8 million per day</strong></span>) has historically been sufficient to deter a 51% attack.</p>
-<p><span style="color: #00FFFF;">If the market cap reaches <strong>$100 trillion</strong></span>, then a proportionate <span class="section-red section-budget-large">SECURITY BUDGET / Day</span> would be around 
+<p><span style="color: #00FFFF;">If the market cap reaches <strong>$100 trillion</strong></span>, then a proportionate SECURITY BUDGET / Day would be around 
   <span style="color: #FFD700;"><strong>$2 trillion per year</strong></span> (or about <span style="color: #ADFF2F;"><strong>$5.48 billion per day</strong></span>).</p>
 <p><span style="color: #FFA07A;">This isn’t wasted spending</span> — it funds infrastructure. 
-  Unlike defending the U.S. dollar through military force, <span style="color: #FF69B4;">PoW <span class="section-red section-budget-large">SECURITY BUDGET / Day</span>s</span> largely support 
+  Unlike defending the U.S. dollar through military force, <span style="color: #FF69B4;">PoW SECURITY BUDGET / Days</span> largely support 
   <span style="color: #7FFFD4;">renewable energy mining</span>. The result? 
   <span style="color: #00FA9A;">More clean energy production</span>, 
   <span style="color: #9370DB;">economic empowerment</span>, and a 
@@ -394,22 +417,22 @@
 <div style="display: flex; justify-content: flex-start; margin-top: 40px;">
 <div style="width: 45%; padding: 10px; border-right: 2px solid black; text-align: center;">
 <div style="display:inline-block;"><img src="data:image/png;base64,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" style="height:80px;"/></div>
-<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #70C7BA; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;"><span class="section-red">FEE REVENUE / Day</span> </div>
+<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #70C7BA; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">FEE REVENUE / Day </div>
 <div id="kaspaFeeBox" style="height: 60px;  margin: 10px 0; font-size: 1.5em; line-height: 60px; font-size: 2em; font-size: 1.6em; font-weight: bold; font-size: 2.2em; font-weight: bold;"></div>
-<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #70C7BA; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;"><span class="section-red">BLOCK REWARD / Day</span> </div>
+<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #70C7BA; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">BLOCK REWARD / Day </div>
 <div id="kaspaBlockBox" style="height: 60px;  margin: 10px 0; font-size: 1.5em; line-height: 60px; font-size: 2em; font-size: 1.6em; font-weight: bold; font-size: 2.2em; font-weight: bold;"></div>
-<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #70C7BA; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;"><span class="section-red section-budget-large">SECURITY BUDGET / Day</span> </div>
+<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #70C7BA; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">SECURITY BUDGET / Day </div>
 <div id="kaspaTotalBox" style="height: 60px; background-color: #66ccc2; margin: 10px 0; font-size: 5em; line-height: 60px; font-size: 5em; font-size: 5em; font-weight: bold; font-size: 5em; font-weight: bold;"></div>
 
 </div>
 <div style="width: 45%; padding: 10px; text-align: center;">
 <div style="display:inline-block;"><img src="data:image/png;base64,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" style="height:80px;"/></div>
 
-<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #FF9900; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;"><span class="section-red">FEE REVENUE / Day</span> </div>
+<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #FF9900; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">FEE REVENUE / Day </div>
 <div id="btcFeeBox" style="height: 60px;  margin: 10px 0; font-size: 1.5em; line-height: 60px; font-size: 2em; font-size: 1.6em; font-weight: bold; font-size: 2.2em; font-weight: bold;"></div>
-<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #FF9900; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;"><span class="section-red">BLOCK REWARD / Day</span> </div>
+<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #FF9900; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">BLOCK REWARD / Day </div>
 <div id="btcBlockBox" style="height: 60px;  margin: 10px 0; font-size: 1.5em; line-height: 60px; font-size: 2em; font-size: 1.6em; font-weight: bold; font-size: 2.2em; font-weight: bold;"></div>
-<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #FF9900; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;"><span class="section-red section-budget-large">SECURITY BUDGET / Day</span> </div>
+<div style="font-weight: bold; font-size: 1.9em; margin-top: 10px; color: #FF9900; text-shadow: 0.5px 0.5px 0 #000, -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000;">SECURITY BUDGET / Day </div>
 <div id="btcTotalBox" style="height: 60px; background-color: orange; margin: 10px 0; font-size: 5em; line-height: 60px; font-size: 5em; font-size: 5em; font-weight: bold; font-size: 5em; font-weight: bold;"></div>
 
 </div>
@@ -509,7 +532,7 @@
     const btcReward = getBitcoinBlockReward(rewardDate);
 
       const kaspaBlock = kaspaRate * 86400 * kaspaPrice;
-      const kaspaFee = feeRate * 259200000 * (congestion / 100);
+      const kaspaFee = feeRate * 2592000000 * (congestion / 100);
       const kaspaTotal = kaspaBlock + kaspaFee;
 
       const btcBlock = btcReward * 144 * bitcoinPrice;
@@ -646,7 +669,7 @@ function updateVisuals() {
 }
 setInterval(updateVisuals, 500);
 </script><div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 800px; margin: 40px auto;"></div>
-<button onclick="toggleView()" style="position: absolute; top: 10px; right: 10px; z-index: 1000; font-size: 1.2em; padding: 10px;">Toggle View</button>
+<button style="display:none;" onclick="toggleView()" style="display:none; position: absolute; top: 10px; right: 10px; z-index: 1000; font-size: 1.2em; padding: 10px;" style="display:none;">Toggle View</button>
 <script>
 function parseAbbreviatedNumber(str) {
     if (!str) return 0;
